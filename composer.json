@@ -1,0 +1,12 @@
+{
+  "name": "solis/phpview",
+  "autoload": {
+    "psr-4": {
+      "Solis\\PhpView\\": "app/src"
+    }
+  },
+  "require": {
+    "solis/phpbreaker": "dev-master"
+  },
+  "minimum-stability": "dev"
+}
