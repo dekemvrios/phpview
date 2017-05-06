@@ -4,6 +4,7 @@ namespace Solis\PhpView\Abstractions;
 
 use Solis\PhpView\Contracts\ViewContract;
 use Solis\PhpView\Contracts\TemplateContract;
+use Solis\PhpView\Contracts\AttachmentContract;
 use Solis\Breaker\TException;
 
 /**
@@ -24,9 +25,9 @@ abstract class ViewAbstract implements ViewContract
     protected $data;
 
     /**
-     * @var ViewContract[]
+     * @var AttachmentContract
      */
-    protected $attached;
+    protected $attachment;
 
     /**
      * __construct
@@ -113,19 +114,19 @@ abstract class ViewAbstract implements ViewContract
     }
 
     /**
-     * @return ViewContract[]
+     * @return AttachmentContract
      */
-    public function getAttached()
+    public function getAttachment()
     {
-        return $this->attached;
+        return $this->attachment;
     }
 
     /**
-     * @param ViewContract[] $attached
+     * @param AttachmentContract $attachment
      */
-    public function setAttached($attached)
+    public function setAttachment($attachment)
     {
-        $this->attached = $attached;
+        $this->attachment = $attachment;
     }
 
 }
