@@ -2,42 +2,24 @@
 
 namespace Solis\PhpView\Model;
 
+use Solis\PhpView\Abstractions\AttachmentAbstract;
 use Solis\PhpView\Contracts\ViewContract;
-use Solis\PhpView\Contracts\AttachmentContract;
 
 /**
  * Class Attachment
  *
  * @package Solis\PhpView\Model
  */
-class Attachment implements AttachmentContract
+class Attachment extends AttachmentAbstract
 {
-    /**
-     * @var ViewContract[]
-     */
-    private $attached;
 
     /**
      * @param ViewContract[] $attached
+     *
+     * @return static
      */
-    public function setAttached($attached)
+    public static function make($attached)
     {
-        $this->attached = $attached;
-    }
-
-    /**
-     * @return ViewContract[]
-     */
-    public function getAttached()
-    {
-        return $this->attached;
-    }
-
-    /**
-     * @param $item
-     */
-    public function append($item)
-    {
-        $this->attached[] = $item;
+        return new static($attached);
     }
 }

@@ -51,7 +51,7 @@ abstract class TemplateAbstract implements TemplateContract
             throw new TException(
                 __CLASS__,
                 __METHOD__,
-                "arquivo [ " . $this->getName() . " ] relacionado ao template nao encontrado",
+                "arquivo [ " . $this->getPath() . " ] relacionado ao template nao encontrado",
                 500
             );
         }
@@ -91,9 +91,13 @@ abstract class TemplateAbstract implements TemplateContract
 
     /**
      * @return string
+     *
+     * @throws TException
      */
     public function render()
     {
+        $this->exist();
+
         return file_get_contents($this->getPath());
     }
 

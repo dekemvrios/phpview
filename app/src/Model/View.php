@@ -17,21 +17,28 @@ class View extends ViewAbstract
      *
      * @param string $name
      * @param string $path
+     * @param array  $data
      *
      * @return \static
      * @throws TException
      */
     public static function make(
         $name,
-        $path
+        $path,
+        $data = null
     ) {
-
-        return new static(
+        $view = new static(
             Template::make(
                 $name,
                 $path
             )
         );
+
+        if (!empty($data)) {
+            $view->setData($data);
+        }
+
+        return $view;
     }
 
 

@@ -52,7 +52,7 @@ abstract class ViewAbstract implements ViewContract
             extract($this->getData());
         }
 
-        // inclui o template de acordo com o seu diretório
+        // inclui o template de acordo com o seu diretï¿½rio
         include_once $this->getTemplate()->getPath();
     }
 
@@ -73,6 +73,17 @@ abstract class ViewAbstract implements ViewContract
                 $html = str_replace(
                     "{{$param}}",
                     $value,
+                    $html
+                );
+            }
+        }
+
+        // valida se ha informacoes adicionais a serem adicionadas
+        if (!empty($this->getAttachment())) {
+            foreach ($this->getAttachment()->getAttached() as $view) {
+                $html = str_replace(
+                    "{{$view->getTemplate()->getName()}}",
+                    $view->render(),
                     $html
                 );
             }

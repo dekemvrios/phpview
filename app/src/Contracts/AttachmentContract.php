@@ -20,7 +20,7 @@ interface AttachmentContract
     public function getAttached();
 
     /**
-     * @param $item
+     * @param ViewContract $view
      */
-    public function append($item);
+    public function append($view);
 }
