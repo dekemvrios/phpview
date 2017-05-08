@@ -41,22 +41,6 @@ abstract class ViewAbstract implements ViewContract
     }
 
     /**
-     * inc
-     *
-     * @throws TException
-     */
-    public function incorporate()
-    {
-        // extrai os dados como variaveis caso existirem
-        if (!empty($this->getData())) {
-            extract($this->getData());
-        }
-
-        // inclui o template de acordo com o seu diret�rio
-        include_once $this->getTemplate()->getPath();
-    }
-
-    /**
      * render
      *
      * @return string
