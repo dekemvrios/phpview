@@ -15,6 +15,11 @@ use Solis\Breaker\TException;
 abstract class ViewAbstract implements ViewContract
 {
     /**
+     * @var bool
+     */
+    protected $draw;
+
+    /**
      * @var TemplateContract
      */
     protected $template;
@@ -38,6 +43,7 @@ abstract class ViewAbstract implements ViewContract
         $template
     ) {
         $this->setTemplate($template);
+        $this->setDraw(true);
     }
 
     /**
@@ -67,13 +73,29 @@ abstract class ViewAbstract implements ViewContract
             foreach ($this->getAttachment()->getAttached() as $view) {
                 $html = str_replace(
                     "{{$view->getTemplate()->getName()}}",
-                    $view->render(),
+                    $view->hasDraw() ? $view->render() : '',
                     $html
                 );
             }
         }
 
         return $html;
+    }
+
+    /**
+     * @param bool $draw
+     */
+    public function setDraw($draw)
+    {
+        $this->draw = $draw;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasDraw()
+    {
+        return $this->draw;
     }
 
     /**

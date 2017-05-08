@@ -50,4 +50,18 @@ abstract class AttachmentAbstract implements AttachmentContract
     {
         $this->attached[] = $view;
     }
+
+    /**
+     * @param string $name
+     *
+     * @return ViewContract
+     */
+    public function getEntry($name)
+    {
+        foreach ($this->getAttached() as $item) {
+            if ($item->getTemplate()->getName() === $name) {
+                return $item;
+            }
+        }
+    }
 }
