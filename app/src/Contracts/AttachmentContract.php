@@ -23,4 +23,11 @@ interface AttachmentContract
      * @param ViewContract $view
      */
     public function append($view);
+
+    /**
+     * @param string $name
+     *
+     * @return ViewContract
+     */
+    public function getEntry($name);
 }

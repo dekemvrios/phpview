@@ -48,4 +48,14 @@ interface ViewContract
      * @param AttachmentContract $attachment
      */
     public function setAttachment($attachment);
+
+    /**
+     * @param bool $draw
+     */
+    public function setDraw($draw);
+
+    /**
+     * @return bool
+     */
+    public function hasDraw();
 }
