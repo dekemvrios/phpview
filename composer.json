@@ -6,7 +6,6 @@
     }
   },
   "require": {
-    "solis/phpbreaker": "dev-master"
-  },
-  "minimum-stability": "dev"
+    "solis/phpbreaker": "0.0.1"
+  }
 }
