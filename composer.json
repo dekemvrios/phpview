@@ -1,5 +1,10 @@
 {
   "name": "solis/phpview",
+  "description": "PhpView is a simple html template engine for php",
+  "license": [
+    "GPL-3.0+",
+    "LGPL-3.0+"
+  ],
   "autoload": {
     "psr-4": {
       "Solis\\PhpView\\": "app/src"
