@@ -14,24 +14,29 @@ use Solis\PhpView\Contracts\ViewContract;
 class View extends ViewAbstract
 {
     /**
+     * @var string
+     */
+    protected static $path;
+
+    /**
      * make
      *
      * @param string $name
-     * @param string $path
      * @param array  $data
+     * @param string $path
      *
      * @return ViewContract
      * @throws TException
      */
     public static function make(
         $name,
-        $path,
-        $data = null
+        $data = null,
+        $path = null
     ) {
         $view = new static(
             Template::make(
                 $name,
-                $path
+                empty($path) ? self::getPath() : $path
             )
         );
 
@@ -42,5 +47,29 @@ class View extends ViewAbstract
         return $view;
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public static function getPath()
+    {
+        if (empty(self::$path)) {
+            throw new TException(
+                __CLASS__,
+                __METHOD__,
+                'path for templates has not been defined',
+                400
+            );
+        }
 
+        return self::$path;
+    }
+
+    /**
+     * @param string $path
+     */
+    public static function setPath($path)
+    {
+        self::$path = $path;
+    }
 }
