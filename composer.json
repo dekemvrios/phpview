@@ -7,10 +7,10 @@
   ],
   "autoload": {
     "psr-4": {
-      "Solis\\PhpView\\": "app/src"
+      "Solis\\PhpView\\": "src"
     }
   },
   "require": {
-    "solis/phpbreaker": "0.0.1"
+    "solis/phpbreaker": "0.0.2"
   }
 }

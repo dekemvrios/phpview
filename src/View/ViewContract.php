@@ -1,8 +1,10 @@
 <?php
 
-namespace Solis\PhpView\Contracts;
+namespace Solis\PhpView\View;
 
-use Solis\Breaker\TException;
+use Solis\PhpView\Template\TemplateContract;
+use Solis\PhpView\Attachment\AttachmentContract;
+use Solis\Breaker\Abstractions\TExceptionAbstract;
 
 /**
  * Class ViewContract
@@ -15,7 +17,7 @@ interface ViewContract
      * render
      *
      * @return string
-     * @throws TException
+     * @throws TExceptionAbstract
      */
     public function render();
 

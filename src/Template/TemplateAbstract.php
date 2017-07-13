@@ -1,8 +1,7 @@
 <?php
 
-namespace Solis\PhpView\Abstractions;
+namespace Solis\PhpView\Template;
 
-use Solis\PhpView\Contracts\TemplateContract;
 use Solis\Breaker\TException;
 
 /**

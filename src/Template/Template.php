@@ -1,9 +1,8 @@
 <?php
 
-namespace Solis\PhpView\Model;
+namespace Solis\PhpView\Template;
 
 use Solis\Breaker\TException;
-use Solis\PhpView\Abstractions\TemplateAbstract;
 
 /**
  * Class Template

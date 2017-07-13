@@ -1,9 +1,8 @@
 <?php
 
-namespace Solis\PhpView\Model;
+namespace Solis\PhpView\Attachment;
 
-use Solis\PhpView\Abstractions\AttachmentAbstract;
-use Solis\PhpView\Contracts\ViewContract;
+use Solis\PhpView\View\ViewContract;
 
 /**
  * Class Attachment

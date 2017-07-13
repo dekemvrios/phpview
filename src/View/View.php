@@ -1,10 +1,9 @@
 <?php
 
-namespace Solis\PhpView\Model;
+namespace Solis\PhpView\View;
 
-use Solis\PhpView\Abstractions\ViewAbstract;
+use Solis\PhpView\Template\Template;
 use Solis\Breaker\TException;
-use Solis\PhpView\Contracts\ViewContract;
 
 /**
  * Class View

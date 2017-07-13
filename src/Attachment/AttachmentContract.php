@@ -1,6 +1,8 @@
 <?php
 
-namespace Solis\PhpView\Contracts;
+namespace Solis\PhpView\Attachment;
+
+use Solis\PhpView\View\ViewContract;
 
 /**
  * Class AttachmentContract

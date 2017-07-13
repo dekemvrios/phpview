@@ -1,10 +1,9 @@
 <?php
 
-namespace Solis\PhpView\Abstractions;
+namespace Solis\PhpView\View;
 
-use Solis\PhpView\Contracts\ViewContract;
-use Solis\PhpView\Contracts\TemplateContract;
-use Solis\PhpView\Contracts\AttachmentContract;
+use Solis\PhpView\Template\TemplateContract;
+use Solis\PhpView\Attachment\AttachmentContract;
 use Solis\Breaker\TException;
 
 /**

@@ -2,8 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
-use Solis\PhpView\Model\Attachment;
-use Solis\PhpView\Model\View;
+use Solis\PhpView\Attachment\Attachment;
+use Solis\PhpView\View\View;
 use Solis\Breaker\TException;
 
 try {

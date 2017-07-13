@@ -1,46 +1,42 @@
 # README
 
-## What is PhpView
+## O que é o PhpView
 
-PhpView is a simple template engine for php.
+PhpView é um simples mecanismo de gerenciamento de templates html em PHP
 
-## Requirements
+## Como instalar?
 
-* solis/breaker : dev-master
-
-## How To Install?
-
-This package was designed to be installed with composer dependency management tool.
+Esse pacote foi estruturado para ser instalado por meio do composer.
 
 ```
 composer require solis/phpview
 ``` 
 
-## How To Use it?
+## Como utilizar?
 
-Require it with composer and instantiate a View class as following
+Declare o uso da classe View e utilize seu método estático make
  
 ```
-use Solis\PhpView\Model\View
+use Solis\PhpView\View\View
 
-$view = View::make($name, $path, $data);
+$view = View::make($name, $data, $path);
 ```
 
-The make static method returns a instance of ViewContract that's able to render the html string.
+A chamada ao método estático retorna uma instância de ViewContract que é responsável por renderizar o html como string
 
 ```
 $view->render();
 ```
 
-## How This Works
+## Como Funciona
 
-The view object is built using the make method, that receives 3 arguments: 
+O objeto View é instanciado utilizando o método estático make, qual recebe 3 argumentos:
 
-* $name - name of the file that contains the html content
-* $data - key value array containing the data to render in the html file
-* $path - realpath to the folder that contains the html file
+* $name - nome real do arquivo qual contém o conteúdo html.
+* $data - array associativo contendo os dados a serem renderizados na string html.
+* $path - caminho para o diretório que contém o respectivo arquivo html.
 
-A valid view object instantiation is like the following
+Uma instancia valida do objeto é demonstrada a seguir
 
 ```
 $main = View::make('main.html', [
@@ -49,8 +45,8 @@ $main = View::make('main.html', [
 ],  dirname(__FILE__) . "/");
 ```
 
-The ViewContract uses the concept of attachments to represent others html views linked to itself. A attachment contains
-a array of ViewContract implementations.
+O ViewContract utiliza o conceito de anexos para representar outras Views html vinculadas a si. Um anexo (Attachment) contém um 
+array de implementações de ViewContract.
  
  ```
  $main->setAttachment(Attachment::make([
@@ -60,8 +56,8 @@ a array of ViewContract implementations.
      ], dirname(__FILE__) . "/")
  ]));
  ```
-  
-A attached ViewContract is rendered by default, but is possible to hide it if needed
+ 
+Uma ViewContract utilizada como anexo é renderizada por padrão, porém é possível ocultá-la caso necessário
 
 ```
 $main->getAttachment()->getEntry('attached.html')->setDraw(false);

@@ -1,8 +1,8 @@
 <?php
 
-namespace Solis\PhpView\Contracts;
+namespace Solis\PhpView\Template;
 
-use Solis\Breaker\TException;
+use Solis\Breaker\Abstractions\TExceptionAbstract;
 
 /**
  * Interface TemplateContract
@@ -15,7 +15,7 @@ interface TemplateContract
     /**
      * exist
      *
-     * @throws TException
+     * @throws TExceptionAbstract
      */
     public function exist();
 
