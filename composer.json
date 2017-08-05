@@ -11,6 +11,6 @@
     }
   },
   "require": {
-    "solis/phpbreaker": "0.0.2"
+    "solis/phpbreaker": "~v1.0"
   }
 }
