@@ -1,6 +1,6 @@
 {
   "name": "solis/phpview",
-  "description": "PhpView is a simple html template engine for php",
+  "description": "PhpView is a simple template engine for php",
   "license": [
     "GPL-3.0+",
     "LGPL-3.0+"
@@ -11,6 +11,6 @@
     }
   },
   "require": {
-    "solis/phpbreaker": "0.0.2"
+    "solis/phpbreaker": "~v1.0"
   }
 }
