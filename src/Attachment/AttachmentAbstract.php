@@ -2,6 +2,7 @@
 
 namespace Solis\PhpView\Attachment;
 
+use Solis\PhpView\Template\TemplateContract;
 use Solis\PhpView\View\ViewContract;
 
 /**
@@ -14,7 +15,7 @@ abstract class AttachmentAbstract implements AttachmentContract
     /**
      * @var ViewContract[]
      */
-    protected $attached;
+    protected $attached = [];
 
     /**
      * AttachmentAbstract constructor.
@@ -53,14 +54,14 @@ abstract class AttachmentAbstract implements AttachmentContract
     /**
      * @param string $name
      *
-     * @return ViewContract
+     * @return ViewContract|bool
      */
     public function getEntry($name)
     {
-        foreach ($this->getAttached() as $item) {
-            if ($item->getTemplate()->getName() === $name) {
-                return $item;
-            }
-        }
+        $item = array_filter($this->getAttached(), function (ViewContract $view) use ($name) {
+            return $name == $view->getTemplate()->getName();
+        });
+
+        return $item ? $item[0] : false;
     }
 }

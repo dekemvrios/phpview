@@ -2,8 +2,6 @@
 
 namespace Solis\PhpView\Template;
 
-use Solis\Breaker\Abstractions\TExceptionAbstract;
-
 /**
  * Interface TemplateContract
  *
@@ -11,13 +9,6 @@ use Solis\Breaker\Abstractions\TExceptionAbstract;
  */
 interface TemplateContract
 {
-
-    /**
-     * exist
-     *
-     * @throws TExceptionAbstract
-     */
-    public function exist();
 
     /**
      * @return string
@@ -42,5 +33,16 @@ interface TemplateContract
     /**
      * @return string
      */
+    public function getContent();
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content);
+
+    /**
+     * @return string
+     */
     public function render();
+
 }

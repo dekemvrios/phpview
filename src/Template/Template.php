@@ -12,19 +12,19 @@ use Solis\Breaker\TException;
 class Template extends TemplateAbstract
 {
     /**
-     * @param $name
-     * @param $path
+     * @param string $name
+     * @param string $path
+     * @param string $content
      *
      * @return static
      * @throws TException
      */
-    public static function make(
-        $name,
-        $path
-    ) {
-        return new static(
-            $name,
-            $path
-        );
+    public static function make($name, $path, $content = '')
+    {
+        $template = new static($name, $path);
+
+        $template->setContent($content);
+
+        return $template;
     }
 }

@@ -4,7 +4,7 @@ require_once '../vendor/autoload.php';
 
 use Solis\PhpView\Attachment\Attachment;
 use Solis\PhpView\View\View;
-use Solis\Breaker\TException;
+use Solis\Breaker\Abstractions\TExceptionAbstract;
 
 try {
     // atribui o nome do diretório que contém os templates utilizados
@@ -19,13 +19,20 @@ try {
         View::make('attached.html', [
             'title'   => 'Esse é o elemento anexo (attached)',
             'message' => 'Também contém um corpo de texto',
-            // Também é possível atribuir diretório individualmente para instancia de View
         ], dirname(__FILE__) . "/inside/"),
+
+        View::make('virtual.html', [
+            'title'   => 'Esse é o elemento virtual (virtual)',
+            'message' => 'Com conteúdo gerado dinâmicamente',
+        ], "", file_get_contents(dirname(__FILE__) . '/virtual/virtual.html')),
     ]));
 
-    $main->getAttachment()->getEntry('attached.html')->setDraw(true);
+    $attached = $main->getAttachment()->getEntry('attached.html');
+    if ($attached) {
+        $attached->setDraw(true);
+    }
 
     echo $main->render();
-} catch (TException $ex) {
-    echo $ex->toJson();
+} catch (\Exception $ex) {
+    echo $ex instanceof TExceptionAbstract ? $ex->toJson() : $ex->getMessage();
 }

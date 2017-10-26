@@ -3,6 +3,7 @@
 namespace Solis\PhpView\Template;
 
 use Solis\Breaker\TException;
+use Solis\PhpView\Exceptions\NotFoundTemplateException;
 
 /**
  * Class Template
@@ -22,6 +23,11 @@ abstract class TemplateAbstract implements TemplateContract
     protected $path;
 
     /**
+     * @var string
+     */
+    protected $content;
+
+    /**
      * Template constructor.
      *
      * @param $name
@@ -29,30 +35,11 @@ abstract class TemplateAbstract implements TemplateContract
      *
      * @throws TException;
      */
-    protected function __construct(
-        $name,
-        $path
-    ) {
-        $this->setName($name);
-        $this->setPath($path . $name);
-
-        $this->exist();
-    }
-
-    /**
-     * exist
-     *
-     * @throws TException
-     */
-    public function exist()
+    protected function __construct($name, $path = '')
     {
-        if (!file_exists($this->getPath())) {
-            throw new TException(
-                __CLASS__,
-                __METHOD__,
-                "arquivo [ " . $this->getPath() . " ] relacionado ao template nao encontrado",
-                500
-            );
+        $this->setName($name);
+        if ($path) {
+            $this->setPath($path . $name);
         }
     }
 
@@ -82,22 +69,38 @@ abstract class TemplateAbstract implements TemplateContract
 
     /**
      * @param string $path
+     *
+     * @throws NotFoundTemplateException
      */
     public function setPath($path)
     {
+        if (!file_exists($path)) {
+            throw new NotFoundTemplateException();
+        }
         $this->path = $path;
     }
 
     /**
      * @return string
-     *
-     * @throws TException
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return bool|string
      */
     public function render()
     {
-        $this->exist();
-
-        return file_get_contents($this->getPath());
+        return $this->content ? $this->content : file_get_contents($this->getPath());
     }
-
 }

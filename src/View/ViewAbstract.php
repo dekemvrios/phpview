@@ -57,18 +57,14 @@ abstract class ViewAbstract implements ViewContract
         $html = $this->getTemplate()->render();
 
         // substitui as palavras reservadas caso existirem dados atribuidos
-        if (!empty($this->getData())) {
+        if ($this->getData()) {
             foreach ($this->getData() as $param => $value) {
-                $html = str_replace(
-                    "{{$param}}",
-                    $value,
-                    $html
-                );
+                $html = str_replace("{{$param}}", $value, $html);
             }
         }
 
         // valida se ha informacoes adicionais a serem adicionadas
-        if (!empty($this->getAttachment())) {
+        if ($this->getAttachment()) {
             foreach ($this->getAttachment()->getAttached() as $view) {
                 $html = str_replace(
                     "{{$view->getTemplate()->getName()}}",
