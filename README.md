@@ -2,7 +2,7 @@
 
 ## O que é o PhpView
 
-PhpView é um simples mecanismo de gerenciamento de templates html em PHP
+PhpView é um simples mecanismo de gerenciamento de templates html em PHP.
 
 ## Como instalar?
 
